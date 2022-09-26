@@ -9,8 +9,7 @@
 const request = require('request');
 
 const fetchMyIP = function(callback) {
-  // use request to fetch IP address from JSON API
-  // curl 'https://api.ipify.org?format=json'
+  
   request('https://api.ipify.org?format=json', (error, response, body) => {
     // inside the request callback ...
     // error can be set if invalid domain, user is offline, etc.
@@ -26,8 +25,8 @@ const fetchMyIP = function(callback) {
     }
 
     // if we get here, all's well and we got the data
-    const data = JSON.parse(body);
-    callback(null, data.ip);
+    const ip = JSON.parse(body).ip;
+    callback(null, ip);
   });
 };
 
